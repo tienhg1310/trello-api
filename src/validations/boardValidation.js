@@ -20,9 +20,11 @@ const createNew = async (req, res, next) => {
   })
 
   try {
+    // xu li validation req.body
     // abortEarly: false truong hop co nhieu loi tra ve tat ca
     await correctCondition.validateAsync(req.body, { abortEarly: false })
 
+    next()
     res.status(StatusCodes.CREATED).json({
       code: StatusCodes.CREATED,
       message: 'POST from Validation: API create new board'
