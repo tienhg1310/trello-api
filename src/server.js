@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
-import express from 'express'
 import exitHook from 'async-exit-hook'
-import { CONNECT_DB, GET_DB, CLOSE_DB } from '~/config/mongodb'
+import express from 'express'
 import { env } from '~/config/environment'
+import { CLOSE_DB, CONNECT_DB } from '~/config/mongodb'
 import { APIs_V1 } from '~/routes/v1'
 
 const START_SERVER = () => {

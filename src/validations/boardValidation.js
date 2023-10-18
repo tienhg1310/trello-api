@@ -23,12 +23,8 @@ const createNew = async (req, res, next) => {
     // xu li validation req.body
     // abortEarly: false truong hop co nhieu loi tra ve tat ca
     await correctCondition.validateAsync(req.body, { abortEarly: false })
-
+    // validate hop le thi di tiep vao controller (check controller o file route)
     next()
-    res.status(StatusCodes.CREATED).json({
-      code: StatusCodes.CREATED,
-      message: 'POST from Validation: API create new board'
-    })
   } catch (error) {
     res.status(StatusCodes.UNPROCESSABLE_ENTITY).json({
       code: StatusCodes.UNPROCESSABLE_ENTITY,
