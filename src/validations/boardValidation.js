@@ -1,5 +1,6 @@
 import Joi from 'joi'
 import { StatusCodes } from 'http-status-codes'
+import ApiError from '~/utils/ApiError'
 
 const createNew = async (req, res, next) => {
   const correctCondition = Joi.object({
@@ -26,10 +27,7 @@ const createNew = async (req, res, next) => {
     // validate hop le thi di tiep vao controller (check controller o file route)
     next()
   } catch (error) {
-    res.status(StatusCodes.UNPROCESSABLE_ENTITY).json({
-      code: StatusCodes.UNPROCESSABLE_ENTITY,
-      errors: error.details
-    })
+    next(new ApiError(StatusCodes.UNPROCESSABLE_ENTITY, error.message))
   }
 }
 
