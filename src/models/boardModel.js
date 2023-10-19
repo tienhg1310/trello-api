@@ -34,7 +34,6 @@ const createNew = async (data) => {
 
 const findOneById = async (id) => {
   try {
-    console.log('id: ', id)
     const result = await GET_DB()
       .collection(BOARD_COLLECTION_NAME)
       .findOne({ _id: new ObjectId(id) })
