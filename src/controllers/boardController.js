@@ -1,5 +1,5 @@
-import { StatusCodes } from 'http-status-codes'
-import { boardService } from '~/services/boardService'
+import { StatusCodes } from 'http-status-codes';
+import { boardService } from '~/services/boardService';
 
 const createNew = async (req, res, next) => {
   try {
@@ -11,25 +11,26 @@ const createNew = async (req, res, next) => {
     // console.log('req.jwtDecoded: ', req.jwtDecoded)
 
     // dieu huong du lieu sang tang service
-    const createdBoard = await boardService.createNew(req.body)
+    const createdBoard = await boardService.createNew(req.body);
     // co kq thi tra ve
-    res.status(StatusCodes.CREATED).json({ ...createdBoard })
+    res.status(StatusCodes.CREATED).json({ ...createdBoard });
   } catch (error) {
-    next(error)
+    next(error);
   }
-}
+};
 const getDetails = async (req, res, next) => {
   try {
-    const boardId = req.params.id
-    const board = await boardService.getDetails(boardId)
+    const boardId = req.params.id;
 
-    res.status(StatusCodes.OK).json({ ...board })
+    const board = await boardService.getDetails(boardId);
+
+    res.status(StatusCodes.OK).json({ ...board });
   } catch (error) {
-    next(error)
+    next(error);
   }
-}
+};
 
 export const boardController = {
   createNew,
-  getDetails
-}
+  getDetails,
+};
