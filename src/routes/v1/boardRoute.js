@@ -1,19 +1,19 @@
-import { StatusCodes } from 'http-status-codes';
-import express from 'express';
-import { boardValidation } from '~/validations/boardValidation';
-import { boardController } from '~/controllers/boardController';
+import { StatusCodes } from 'http-status-codes'
+import express from 'express'
+import { boardValidation } from '~/validations/boardValidation'
+import { boardController } from '~/controllers/boardController'
 
-const Router = express.Router();
+const Router = express.Router()
 
 Router.route('/')
   .get((req, res) => {
     res.status(StatusCodes.OK).json({
       code: StatusCodes.OK,
-      message: 'GET: API get list board',
-    });
+      message: 'GET: API get list board'
+    })
   })
-  .post(boardValidation.createNew, boardController.createNew);
+  .post(boardValidation.createNew, boardController.createNew)
 
-Router.route('/:id').get(boardController.getDetails).put();
+Router.route('/:id').get(boardController.getDetails).put()
 
-export const boardRoute = Router;
+export const boardRoute = Router

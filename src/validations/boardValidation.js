@@ -1,7 +1,7 @@
-import Joi from 'joi';
-import { StatusCodes } from 'http-status-codes';
-import ApiError from '~/utils/ApiError';
-import { BOARD_TYPES } from '~/utils/constants';
+import Joi from 'joi'
+import { StatusCodes } from 'http-status-codes'
+import ApiError from '~/utils/ApiError'
+import { BOARD_TYPES } from '~/utils/constants'
 
 const createNew = async (req, res, next) => {
   const correctCondition = Joi.object({
@@ -12,7 +12,7 @@ const createNew = async (req, res, next) => {
       'string.max':
         'Title length must be less than or equal to 5 characters long (tienhg2001)',
       'string.trim':
-        'Title must not have leading or trailing white space (tienhg2001)',
+        'Title must not have leading or trailing white space (tienhg2001)'
     }),
     description: Joi.string()
       .required()
@@ -28,24 +28,22 @@ const createNew = async (req, res, next) => {
         'string.max':
           'Description length must be less than or equal to 256 characters long (tienhg2001)',
         'string.trim':
-          'Description must not have leading or trailing white space (tienhg2001)',
+          'Description must not have leading or trailing white space (tienhg2001)'
       }),
-    type: Joi.string()
-      .valid(BOARD_TYPES.PUBLIC, BOARD_TYPES.PRIVATE)
-      .required(),
-  });
+    type: Joi.string().valid(BOARD_TYPES.PUBLIC, BOARD_TYPES.PRIVATE).required()
+  })
 
   try {
     // xu li validation req.body
     // abortEarly: false truong hop co nhieu loi tra ve tat ca
-    await correctCondition.validateAsync(req.body, { abortEarly: false });
+    await correctCondition.validateAsync(req.body, { abortEarly: false })
     // validate hop le thi di tiep vao controller (check controller o file route)
-    next();
+    next()
   } catch (error) {
-    next(new ApiError(StatusCodes.UNPROCESSABLE_ENTITY, error.message));
+    next(new ApiError(StatusCodes.UNPROCESSABLE_ENTITY, error.message))
   }
-};
+}
 
 export const boardValidation = {
-  createNew,
-};
+  createNew
+}

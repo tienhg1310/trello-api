@@ -26,9 +26,8 @@ const getDetails = async (boardId) => {
 
     const resBoard = cloneDeep(board)
     resBoard.columns.forEach((column) => {
-      column.cards = resBoard.cards.filter(
-        (card) => card.columnId.equals(column._id)
-        // (card) => card.columnId.toString() === column._id.toString()
+      column.cards = resBoard.cards.filter((card) =>
+        card.columnId.equals(column._id)
       )
     })
     delete resBoard.cards

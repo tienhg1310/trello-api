@@ -12,11 +12,12 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
     requireConfigFile: false,
-    allowImportExportEverywhere: true,
+    allowImportExportEverywhere: true
   },
   plugins: [],
   rules: {
     // Common
+    'no-useless-catch': 0,
     'no-console': 1,
     'no-extra-boolean-cast': 0,
     'no-lonely-if': 1,
@@ -35,6 +36,6 @@ module.exports = {
     'keyword-spacing': 1,
     'comma-dangle': 1,
     'comma-spacing': 1,
-    'arrow-spacing': 1,
-  },
-};
+    'arrow-spacing': 1
+  }
+}
